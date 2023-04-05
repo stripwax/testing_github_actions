@@ -42,5 +42,6 @@ jobs:
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: version.h
-          body: "#define VERSION {{GITHUB_RUN_NUMBER}}"
+          body: "#define VERSION ${{ GITHUB_RUN_NUMBER }}"
           overwrite: 'true'
+          token: ${{ secrets.GITHUB_TOKEN }}
