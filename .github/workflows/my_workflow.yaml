@@ -38,10 +38,14 @@ jobs:
 #           echo Add other actions to build,
 #           echo test, and deploy your project.
 
+      - name: create a custom version using run number offset by 1000 (run_number + 1000)
+        run: |
+          echo "VERSION_NUMBER_WITH_OFFSET=$((1000+GITHUB_RUN_NUMBER))" >> $GITHUB_ENV
+          
       - name: Modify version.h
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: version.h
-          body: "#define VERSION ${{ GITHUB_RUN_NUMBER }}"
+          body: "#define VERSION {{ env.VERSION_NUMBER_WITH_OFFSET }}"
           overwrite: 'true'
           token: ${{ secrets.GITHUB_TOKEN }}
