@@ -1,1 +1,1 @@
-#define VERSION {{ env.VERSION_NUMBER_WITH_OFFSET }}
+#define VERSION 1009
